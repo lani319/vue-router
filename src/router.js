@@ -4,6 +4,11 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
+const About = () => import(/* webpackChunkName: "about" */ './views/About.vue')
+const Users = () => import(/* webpackChunkName: "about" */ './views/Users.vue')
+
+const Users_detail = () => import(/* webpackChunkName: "Users_detail" */ './views/Users_detail.vue')
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -17,10 +22,27 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      
+      component: About
+    },
+    {
+      path: '/users',
+      name: 'users',
+      
+      component: Users,
+      //칠드런 속성으로 하위 경로
+      //폴더 단위로 메뉴를 구성하면 될듯. 인서트, 수정, 딜리트 를 하나의 그룹으로 구현 
+
+      children:[
+        { 
+          path : ":id",
+          name : "users-detail",
+          component: Users_detail 
+          },
+
+      ]
+
+
     }
   ]
 })

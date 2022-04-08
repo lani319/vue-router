@@ -6,7 +6,8 @@
       app
     >
       <v-list dense>
-        <v-list-tile>
+        
+        <v-list-tile router :to="{name:'home'}" exact> <!-- 라우터 안의 name 변수 -->
           <v-list-tile-action>
             <i class="fas fa-home"></i>
           </v-list-tile-action>
@@ -14,7 +15,8 @@
             <v-list-tile-title>Home</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile>
+
+        <v-list-tile router :to="{name:'about'}" exact>
           <v-list-tile-action>
             <i class="fas fa-user"></i>
           </v-list-tile-action>
@@ -22,6 +24,20 @@
             <v-list-tile-title>About</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+
+        <v-list-tile router 
+        :to="{name:'users'}" 
+        exact>
+        
+          <v-list-tile-action>
+            <i class="fas fa-user"></i>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Users</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
