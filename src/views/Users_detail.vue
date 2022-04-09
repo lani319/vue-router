@@ -1,7 +1,9 @@
 <template>
     <div>
-        {{ userId }}
+        <p>유저번호 : {{ userId }} </p>
+        <v-btn @click="editUserInfo" small >수정</v-btn>
     </div>
+
 </template>
 
 <script>
@@ -12,6 +14,12 @@ export default {
 computed : {
     userId() {
         return this.$route.params.id
+    }
+},
+methods : {
+    editUserInfo(){
+        this.$router.push({name:'users-edit'})
+        //this.$router.push({path:'users/${this.userId}/edit'})
     }
 }
 

@@ -4,10 +4,11 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-const About = () => import(/* webpackChunkName: "about" */ './views/About.vue')
-const Users = () => import(/* webpackChunkName: "about" */ './views/Users.vue')
+const About = () => import('./views/About.vue')
+const Users = () => import('./views/Users.vue')
 
-const Users_detail = () => import(/* webpackChunkName: "Users_detail" */ './views/Users_detail.vue')
+const Users_detail = () => import('./views/Users_detail.vue')
+const Users_edit = () => import('./views/Users_edit.vue')
 
 export default new Router({
   mode: 'history',
@@ -23,6 +24,10 @@ export default new Router({
       path: '/about',
       name: 'about',
       
+      beforeEnter : (to,from,next) => {
+        console.log('to:',to,'from:',from,'next:',next)
+      },
+
       component: About
     },
     {
@@ -39,7 +44,12 @@ export default new Router({
           name : "users-detail",
           component: Users_detail 
           },
-
+          { 
+            path : ":id/edit",
+            name : "users-edit",
+            component: Users_edit 
+            },
+  
       ]
 
 
